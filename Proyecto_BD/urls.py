@@ -22,8 +22,10 @@ from productos import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.mostrarIndex),
-    path('form_registrar',views.mostrarFormRegistrar),
-    path('listado',views.mostrarListado),
-    path('form_actualizar',views.mostrarFormActualizar),
-    path('insertar',views.insertarProducto),
+    path('form_registrar', views.mostrarFormRegistrar),
+    path('listado', views.mostrarListado),
+    path('form_actualizar/<int:id>', views.mostrarFormActualizar),
+    path('insertar', views.insertarProducto),
+    path('actualizar/<int:id>', views.actualizarProducto),
+    path('eliminar/<int:id>', views.eliminarProducto),
 ]

@@ -1,20 +1,159 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Index</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    </head>
-    <body>
-        
-        <div class="container text-center">
-            <h1>Menú Principal</h1>
-            <h4><a href="/form_registrar">Ir Al Formulario de Registro</a></h4>
-            <h4><a href="/listado">Ir Al Listado de Productos</a></h4>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Electrolize&display=swap" rel="stylesheet">
+    <title>Sistema de Gestión de Productos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'jua', 'electrolize';
+        }
+
+        .main-container {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            margin-bottom: 30px;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .welcome-title {
+            color: #2948d5;
+            font-weight: bold;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 3px 2px rgba(0, 0, 0, 0.2);
+            font-family: 'jua';
+            text-transform: uppercase;
+        }
+
+        .welcome-subtitle {
+            color: #484646;
+            font-size: 1em;
+            margin-bottom: 10px;
+            font-family: 'electrolize';
+            text-transform: uppercase;
+        }
+
+        .menu-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid transparent;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+        }
+
+        .menu-card.registrar {
+            background: linear-gradient(135deg, #500e94, #5774f5, #500e94);
+            color: white;
+        }
+
+        .menu-card.listado {
+            background: linear-gradient(135deg, #870012, #fe3fc4, #870012);
+            color: white;
+        }
+
+        .menu-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .menu-title {
+            font-size: 1.7em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'jua';
+            text-transform: uppercase;
+            text-shadow: 1px 3px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-description {
+            font-size: 0.85rem;
+            font-family: 'electrolize';
+            text-transform: uppercase;
+        }
+
+        .footer-text {
+            color: white;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container main-container">
+        <div class="welcome-card text-center">
+            <h1 class="welcome-title">
+                <i class="bi bi-shop"></i> Sistema de Gestión de Productos
+            </h1>
+            <p class="welcome-subtitle">
+                Administra tu inventario de forma fácil y eficiente
+            </p>
         </div>
 
-    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </body>
+        <div class="menu-cards">
+            <a href="/form_registrar" class="menu-card registrar">
+                <i class="bi bi-plus-circle-fill menu-icon"></i>
+                <div class="menu-title">Registrar Producto</div>
+                <div class="menu-description">
+                    Agrega nuevos productos a tu inventario con todos sus detalles
+                </div>
+            </a>
+
+            <a href="/listado" class="menu-card listado">
+                <i class="bi bi-list-ul menu-icon"></i>
+                <div class="menu-title">Ver Productos</div>
+                <div class="menu-description">
+                    Consulta, edita y elimina productos de tu inventario
+                </div>
+            </a>
+        </div>
+
+        <div class="footer-text">
+            <p>Sistema de Gestión © 2025</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

@@ -1,57 +1,215 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Formulario</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    </head>
-    <body>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Electrolize&display=swap" rel="stylesheet">
+    <title>Registrar Producto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 30px 0;
+        }
 
-        <div class="container text-center">
-            <h1>Formulario de Registro</h1>
-            <h4><a href="/">Volver al Index</a></h4>
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            color: #2948d5;
+            font-weight: bold;
+            font-size: 2em;
+            margin-bottom: 15px;
+            margin-top: 10px;
+            font-family: 'jua';
+            text-transform: uppercase;
+        }
+
+        .page-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .btn-home {
+            background: linear-gradient(135deg, #500e94, #5774f5, #500e94);
+            color: white;
+            border: none;
+            padding: 6px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-family: 'electrolize';
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+            font-family: 'jua';
+            text-transform: uppercase;
+            font-size: 0.95em;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 8px;
+            transition: all 0.3s ease;
+            font-family: 'electrolize';
+            text-transform: uppercase;
+            font-size: 0.8em;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #500e94, #5774f5, #500e94, #5774f5, #500e94);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            font-family: 'electrolize';
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .input-icon {
+            position: relative;
+        }
+
+        .input-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+        }
+
+        .input-icon input,
+        .input-icon select {
+            padding-left: 50px;
+        }
+
+        .alert {
+            border-radius: 10px;
+            border: none;
+            font-family: 'electrolize';
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-card">
+            <div class="text-center">
+                <i class="bi bi-plus-circle-fill page-icon"></i>
+                <h1 class="page-title">Registrar Producto</h1>
+                <a href="/" class="btn-home">
+                    <i class="bi bi-house-fill"></i> Volver al Inicio
+                </a>
+            </div>
 
             {% if msjOk %}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <h5>{{ msjOk }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="bi bi-check-circle-fill"></i> <strong>{{ msjOk }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
             {% endif %}
 
             {% if msjErr %}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <h5>{{ msjErr }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-triangle-fill"></i> <strong>{{ msjErr }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
             {% endif %}
 
             <form action="/insertar" method="post">
                 {% csrf_token %}
                 
-                <input type="text" name="txtnom" placeholder="Nombre de Producto" required class="form-control form-control-lg" />
+                <div class="mb-3">
+                    <label class="form-label">
+                        <i class="bi bi-tag-fill"></i> Nombre del Producto
+                    </label>
+                    <div class="input-icon">
+                        <i class="bi bi-box"></i>
+                        <input type="text" name="txtnom" placeholder="Ej: Laptop HP" required class="form-control" pattern=".*[a-zA-ZáéíóúÁÉÍÓÚñÑ]+.*" title="El nombre debe contener al menos una letra" />
+                    </div>
+                    <small class="text-muted">El nombre debe contener al menos una letra (puede incluir números)</small>
+                </div>
 
-                <br/>
-                
-                <select name="cbomar" required class="form-select form-select-lg">
-                    <option value="">Seleccione Marca</option>
-                    <option value="A cuenta">A cuenta</option>
-                    <option value="Jumbo">Jumbo</option>
-                    <option value="Lider">Lider</option>
-                </select>
+                <div class="mb-3">
+                    <label class="form-label">
+                        <i class="bi bi-award-fill"></i> Marca
+                    </label>
+                    <div class="input-icon">
+                        <i class="bi bi-shop"></i>
+                        <select name="cbomar" required class="form-select">
+                            <option value="">Seleccione una marca</option>
+                            <option value="A cuenta">A cuenta</option>
+                            <option value="Jumbo">Jumbo</option>
+                            <option value="Lider">Lider</option>
+                        </select>
+                    </div>
+                </div>
 
-                <br/>
+                <div class="mb-3">
+                    <label class="form-label">
+                        <i class="bi bi-currency-dollar"></i> Precio
+                    </label>
+                    <div class="input-icon">
+                        <i class="bi bi-cash"></i>
+                        <input type="number" name="txtpre" min="1" max="9999999" placeholder="Ej: 15000" required class="form-control" />
+                    </div>
+                </div>
 
-                <input type="number" name="txtpre" min="1" max="9999999" placeholder="Precio de Producto" required class="form-control form-control-lg" />
-                
-                <br/>
-                
-                <input type="submit" value="Guardar Datos" class="btn btn-primary btn-lg" style="width:100%"/>
+                <button type="submit" class="btn-submit">
+                    <i class="bi bi-save-fill"></i> Guardar Producto
+                </button>
             </form>
 
+            <div class="text-center mt-3">
+                <a href="/listado" class="text-decoration-none">
+                    <i class="bi bi-list-ul"></i> Ver todos los productos
+                </a>
+            </div>
         </div>
+    </div>
 
-   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
